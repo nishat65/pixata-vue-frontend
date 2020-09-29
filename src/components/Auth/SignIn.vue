@@ -84,9 +84,12 @@ export default defineComponent({
                 console.log(res);
             } catch (error) {
                 this.loading = false;
-                this.errMsg = error.message.includes('401')
-                    ? 'Please check your username or password!'
-                    : 'Something went wrong!';
+                if (
+                    error.message.includes('401') ||
+                    error.message.includes('400')
+                )
+                    this.errMsg = 'Please check your username or password!';
+                else this.errMsg = 'Something went wrong!';
             }
         },
     },
