@@ -1,39 +1,70 @@
 <template>
-  <div>
+  <div class="container">
     <div class="pixata-heading">Pixata</div>
     <form class="form-container" @submit.prevent="signUp()">
+      <div class="quarter-circle"></div>
       <div class="heading">
-        <div class="heading-signUp">SIGN UP</div>
+        <div class="heading-signUp">Sign Up</div>
       </div>
       <div>
         <div class="form-group">
           <label for="first-name">First Name</label>
-          <input id="first-name" type="text" v-model="firstName" />
+          <input
+            id="first-name"
+            type="text"
+            v-model="firstName"
+            placeholder="John"
+          />
         </div>
         <div class="form-group">
           <label for="last-name">Last Name</label>
-          <input id="last-name" type="text" v-model="lastName" />
+          <input
+            id="last-name"
+            type="text"
+            v-model="lastName"
+            placeholder="Doe"
+          />
         </div>
         <div class="form-group">
           <label for="username">Username</label>
-          <input id="username" type="text" v-model="userName" />
+          <input
+            id="username"
+            type="text"
+            v-model="userName"
+            placeholder="johndoe7"
+          />
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input id="email" type="text" v-model="email" />
+          <input
+            id="email"
+            type="email"
+            v-model="email"
+            placeholder="example@com"
+          />
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input id="password" type="text" v-model="password" />
+          <input
+            id="password"
+            type="password"
+            v-model="password"
+            placeholder="********"
+          />
         </div>
         <div class="form-group">
           <label for="confirm-password">Confirm Password</label>
-          <input id="confirm-password" type="text" v-model="confirmPassword" />
+          <input
+            id="confirm-password"
+            type="password"
+            v-model="confirmPassword"
+            placeholder="********"
+          />
         </div>
       </div>
-      <div class="flex-center" style="margin: 1rem;">
+      <div class="flex-col-center">
         <button class="btn-submit" type="submit">Sign Up</button>
-        <p>
+        <p class="text-center">
           Already have an account?
           <router-link to="/signIn">SIGN IN</router-link>
         </p>
@@ -65,10 +96,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.pixata-heading {
+.text-center {
   text-align: center;
-  margin: 2rem;
-  font-size: 2rem;
 }
 
 .flex-center {
@@ -77,33 +106,65 @@ export default defineComponent({
   justify-content: center;
 }
 
-.heading {
+.flex-col-center {
   display: flex;
-  width: 50%;
   align-items: center;
-  margin: 12px auto;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(45deg, #ffffff, #c1dedc);
+}
+
+.pixata-heading {
+  text-align: center;
+  margin: 1rem;
+  font-size: 4rem;
+  font-family: "Dancing Script", cursive;
+}
+
+.quarter-circle {
+  background: #268c83;
+  width: 14%;
+  border-radius: 25%;
+  height: 12%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  clip-path: circle(78.2% at 0 0);
+}
+
+.heading {
+  margin: 0.8rem 0;
+  text-align: center;
 
   &-signUp {
-    border: 1px solid white;
+    font-family: "Dancing Script", cursive;
     text-align: center;
     color: #268c83;
-    background: white;
-    padding: 8px;
+    padding: 0px;
     font-weight: 800;
-    font-size: 1.4rem;
+    font-size: 2.5rem;
   }
 }
 
 .form-container {
-  width: 40%;
-  margin: 1rem auto;
-  display: flex;
-  flex-direction: column;
+  width: 30%;
   padding: 2rem;
-  background: linear-gradient(to left bottom, #45a9a0, #fdfdfdbf),
-    url(/img/pixatashare.d44ed658.jpg);
+  position: relative;
   background-size: cover;
   background-position: center;
+  height: 30rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 3px 3px 12px 2px #5a5858;
 
   label {
     width: 7rem;
@@ -114,23 +175,46 @@ export default defineComponent({
     border: 1px solid #66bfb7;
     outline: none;
     padding: 8px;
+    border-radius: 15px;
+  }
+
+  input[type="email"] {
+    border: 1px solid #66bfb7;
+    outline: none;
+    padding: 8px;
+    border-radius: 15px;
+  }
+
+  input[type="password"] {
+    border: 1px solid #66bfb7;
+    outline: none;
+    padding: 8px;
+    border-radius: 15px;
   }
 }
 
 .form-group {
-  margin: 5px;
+  margin: 8px 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .btn-submit {
-  width: 100px;
   padding: 10px;
   font-size: 1rem;
   margin: 12px;
   border: none;
   background: #268c83;
   color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background: white;
+    color: #268c83;
+    border: 1px solid #268c83;
+  }
 }
 </style>
